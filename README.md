@@ -40,3 +40,32 @@ python3 scanner_v2.py -t 192.168.229.164 -p 1-1024 -v
 
 # Full scan with HTML report and CSV export
 python3 scanner_v2.py -t 192.168.229.164 -p 1-1024 -v -T 200 --report --csv
+---
+
+## Results & Findings
+
+Scan of the Windows 10 target (`192.168.229.164`, confirmed Windows via TTL=128):
+
+| Metric | Result |
+|---|---|
+| Ports scanned | 1–1024 (1,024 total) |
+| Scan time | ~1.15 s (200 threads) |
+| Open ports found | **39** |
+| Critical CVEs | **2** (on port 445 / SMB) |
+| Validation | Nmap 7.99 `-sn` host discovery + TTL=128 |
+| Output | HTML dashboard + CSV export |
+
+### Critical Vulnerabilities Identified
+
+| CVE | Port | Severity | Description |
+|---|---|---|---|
+| CVE-2017-0144 | 445/tcp | CRITICAL | **EternalBlue** — SMBv1 remote code execution, exploited by the WannaCry ransomware. |
+| CVE-2020-0796 | 445/tcp | CRITICAL | **SMBGhost** — SMBv3 pre-auth remote code execution. |
+
+Port 139 (NetBIOS-SSN) was flagged **MEDIUM**; all remaining open ports were classified **LOW**.
+
+---
+
+## Disclaimer
+
+This tool was created for **educational purposes** as part of a Certified Ethical Hacker (CEH) practical training program. Only run it against systems you own or are explicitly authorized to test.
