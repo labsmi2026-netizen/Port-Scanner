@@ -40,6 +40,8 @@ python3 scanner_v2.py -t 192.168.229.164 -p 1-1024 -v
 
 # Full scan with HTML report and CSV export
 python3 scanner_v2.py -t 192.168.229.164 -p 1-1024 -v -T 200 --report --csv
+```
+
 ---
 
 ## Results & Findings
